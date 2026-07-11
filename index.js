@@ -2,7 +2,14 @@ require('dotenv').config();
 const { Client, GatewayIntentBits, Collection } = require('discord.js');
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 const AutoMod = require('./utils/automod');
+
+const PORT = process.env.PORT || 3000;
+http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end('GhostPathGuard Bot is running');
+}).listen(PORT);
 
 let config;
 try {
